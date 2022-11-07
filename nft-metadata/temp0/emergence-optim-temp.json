@@ -1,0 +1,18 @@
+{
+  "token_id": 1001,
+  "name": "Green Pea Flower",
+  "description": "It takes 38 days from seed to emergence, when the temperature is in optimal range 12-18. ",
+  "image": "ipfs://QmYpZF5D95THTiF4gVuUuze46eA4SHjwWEZBvFXSn7GE2k/annuum-preview.png",
+  "background_color": "fcf5e5",
+  "external_url": "https://nicetotouch.eth.link/peppers",
+  "animation_url": "ipfs://QmYpZF5D95THTiF4gVuUuze46eA4SHjwWEZBvFXSn7GE2k/index.html?tokenId=1001",
+  "attributes": [
+    { "trait_type": "Species", "value": "Dingwan 2" },
+    { "trait_type": "Farmer's Name", "value": "Red Pepper" },
+    { "trait_type": "Seeding Date", "value": "15-March-2022" },
+    { "trait_type": "Growth Stage", "value": "Seed to Emergence" },
+    { "trait_type": "Growth period", "value": "40 days" },
+    { "trait_type": "Temperature with in range", "value": "Yes" },
+    { "trait_type": "Ripe Color", "value": "#fa4208" }
+  ]
+}

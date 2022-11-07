@@ -1,0 +1,14 @@
+{
+  "name": "Green Pea Germination",
+  "description": "It takes 38 days from seed to emergence, when the temperature is in optimal range 12-18. ",
+  "image": "ipfs://QmasyTnisRwa1h59bqydcuUTzrsUTx65NGXNmAnhDKtoQd/1-germinate.png",
+  "attributes": [
+    { "Species" : "Dingwan 2" },
+    { "Farmer's Name" : "Blueman" },
+    { "Seeding Date" : "05-November-2022" },
+    { "Growth Stage" : "Seed to Emergence" },
+    { "Growth period" : "40 days" },
+    { "Temperature with in range" : "Yes" },
+    { "Ripe Color" : "#adff2f"  }
+  ]
+}

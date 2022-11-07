@@ -1,0 +1,15 @@
+{
+  "token_id": "1001",
+  "name": "Green Pea Mature",
+  "description": "Harvesting takes 110-120 days after sowing, when the temperature is optimal(12-18), an increase of temperature 1.5 degree celsius led to decrease the growth to 113 days. The grain outputs from the pea crop 11% lower than that of crops with optimal temperature",
+  "image": "ipfs://QmYpZF5D95THTiF4gVuUuze46eA4SHjwWEZBvFXSn7GE2k/annuum-preview.png",
+  "attributes": [
+    {  "Species"  : "Dingwan 2" },
+    {  "Farmer's Name"  : "Blue Man" },
+    {  "Seeding Date"  : "05-November-22" },
+    {  "Growth Stage"  : "Flower to Mature" },
+    {  "Growth period"  : "41 days" },
+    {  "Temperature with in range"  : "No" },
+    {  "Ripe Color"  : "#fa4208" }
+  ]
+}

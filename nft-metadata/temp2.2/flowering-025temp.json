@@ -1,0 +1,15 @@
+{
+  "token_id": 1001,
+  "name": "Green Pea Flower",
+  "description": "It takes 40 days from emergence to flower, when the temperature is in optimal range 12-18, an increase of temperature 1.5 degree celsius led to decrease the growth to 35 days",
+  "image": "ipfs://QmYpZF5D95THTiF4gVuUuze46eA4SHjwWEZBvFXSn7GE2k/annuum-preview.png",
+  "attributes": [
+    {  "Species" : "Dingwan 2" },
+    {  "Farmer's Name" : "Red Pepper" },
+    {  "Seeding Date" : "15-March-2022" },
+    {  "Growth Stage" : "Emergence to Flower" },
+    {  "Growth period" : "35 days" },
+    {  "Temperature with in range" : "No" },
+    {  "Ripe Color" : "#fa4208" }
+  ]
+}

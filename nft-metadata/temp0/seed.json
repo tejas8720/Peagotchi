@@ -1,0 +1,13 @@
+{
+  "token_id": "1001",
+  "name": "Green Pea Seed",
+  "description": "Dingwan 2 is a typical variety of pea that was designed to be shown in mid of the march and harvested in middle 10 days of july every year. In general the growing period from seeding emergence to harvest is 110-120 days",
+  "image": "ipfs://QmasyTnisRwa1h59bqydcuUTzrsUTx65NGXNmAnhDKtoQd/1-seed.png",
+  "attributes": [
+    { "Species" : "Dingwan 2" },
+    { "Farmer's Name" : "Blue Man" },
+    { "Seeding Date" : "05-November-2022" },
+    { "Days to Emergence" : "40" },
+    { "Temperature recorded in celsius" : "17" }
+  ]
+}

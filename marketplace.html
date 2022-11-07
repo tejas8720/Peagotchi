@@ -1,0 +1,426 @@
+<!doctype html>
+<style>
+  .main-app {
+    text-align: center;
+    margin: 100px;
+}
+
+.cta-button {
+    padding: 15px;
+    border: none;
+    border-radius: 12px;
+    min-width: 250px;
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.connect-wallet-button {
+    background: rgb(32, 129, 226);
+}
+
+.mint-nft-button {
+    background: orange;
+}
+.data-button {
+  padding: 15px;
+  border: none;
+  border-radius: 12px;
+  min-width: 250px;
+  color: rgb(198, 65, 65);
+  font-size: 12px;
+  cursor: pointer; 
+}
+.card:hover {
+    box-shadow: 4px 20px 36px 10px rgba(0, 0, 0, 0.3);
+}
+.card {
+    box-shadow: 4px 20px 36px 2px rgba(58, 18, 52, 0.3);
+
+}
+
+.footer {
+  background: #061D25;
+  padding: 10px 0;
+}
+.footer a {
+  color: #70726F;
+  font-size: 20px;
+  padding: 10px;
+  border-right: 1px solid #70726F;
+  transition: all .5s ease;
+}
+.footer a:first-child {
+  border-left: 1px solid #70726F;
+}
+.footer a:hover {
+  color: white;
+}
+
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+
+
+.try {
+  background-image:url("../images/1Asset_11.png");
+  background-repeat: no-repeat, repeat;
+  background-color: #cccccc;
+  padding: 10%;
+}
+
+nav {
+  font-family: 'VT323', sans-serif !important;
+}
+
+.navbar-inner {
+    background:#bd35d1e3;
+    opacity: 0.6;
+}
+
+body {
+  font-family: 'VT323', sans-serif !important;
+  overflow-x: hidden;
+    background-color:#b37fbae3;
+
+}
+
+
+
+
+</style>
+
+<html lang="en">
+  <head>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href='https://fonts.googleapis.com/css?family=VT323:400,300,700' rel='stylesheet' type='text/css'>
+        
+    <title>Peas for Climate</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/web3@latest/dist/web3.min.js"></script>
+    <script type="module" src="../Scripts/buy.js"></script>
+  </head>
+  <body style="background-color: #b37fbae3">
+    <!-- Just an image -->
+    
+    <nav class="navbar navbar-dark bg-dark">
+      <a class="navbar-brand mb-0 h1" href="#">
+        Peagotchi<br>
+        Marketplace
+        </a>
+      </a>
+      <a class="navbar-brand mb-0 h1" href="/index.html">
+        Home
+      </a>
+      <a class="navbar-brand mb-0 h1" href="/meta.html">
+        Peagotchiverse
+      </a>
+      <a class="navbar-brand mb-0 h1" href="/marketplace.html">
+        Market place
+      </a>
+      <a class="navbar-link" href="https://testnets.opensea.io/assets/mumbai/0x7618f41e0b4be75d0ca163987053a6ae9d92c7da/0">
+        Open Sea
+      </a>
+           <button id="connect-metamask" type="button" class="btn" style="background-color: #f4d03f;">Connect Metamask</button>
+          </li>
+          </ul>
+          </div>
+      <script type="module">
+        // Connect to Metamask
+        document.getElementById('connect-metamask').addEventListener('click', event => {
+        let account;
+        let button = event.target;
+        ethereum.request({method: 'eth_requestAccounts'}).then(accounts => {
+          account = accounts[0];
+          console.log(account);
+          button.textContent = account;
+
+          ethereum.request({method: 'eth_getBalance' , params: [account, 'latest']}).then(result => {
+            console.log(result);
+            let wei = parseInt(result,16);
+            let balance = wei / (10**18);
+            console.log(balance + " ETH");
+          });
+        });
+      });
+    </script>
+  </nav>
+
+<br/>
+<h2 class="text-center">Want to Buy Something for Peagotchiverse?</h2>
+<h3 class="text-center">Peagotchi Marketplace</h3>
+
+<br/>
+<div class="container">
+    <div class="row">
+        <div class="col">
+          <div class="card" style="width: 18rem;">
+              <img src="../images/01/growth.png" class="card-img-top try" alt="...">
+              <div class="card-body text-center">
+                <h4 class="card-title">Green Pea Grain</h4><br/>
+                <h6 class="card-text">
+                  <div class="d-flex">
+                    <div class="w-50">Farmer's Name</div>
+                    <div class="w-50">Blue Man</div>
+                  </div>
+                <h6 class="card-text">
+                  <div class="d-flex">
+                    <div class="w-50">Days </div>
+                    <div class="progress my-1 w-50">
+                      <div class="progress-bar" role="progressbar" style="width: 33.33%; background-color: rgba(208, 0, 255, 0.9)" aria-valuenow="40" aria-valuemin="0" aria-valuemax="120">40</div>
+                    </div>
+                  </div>
+                  <h6 class="card-text">
+                    <div class="d-flex">
+                      <div class="w-50">Temperature</div>
+                      <div class="progress my-1 w-50">
+                        <div class="progress-bar" role="progressbar" style="width: 70%; background-color: rgba(208, 0, 255, 0.9)" aria-valuenow="15" aria-valuemin="0" aria-valuemax="25">15</div>
+                      </div>
+                    </div>
+                    <h6 class="card-text">
+                      <div class="d-flex">
+                        <div class="w-50">Seeding Date</div>
+                        <div class="w-50">15-March-2022</div>
+                      </div>
+                      <h6 class="card-text">
+                        <div class="d-flex">
+                          <div class="w-50">Growth Stage</div>
+                          <div class="w-50">Emergence to Flower</div>
+                        </div><br/>
+                <p class="h2"><span><img src="https://cryptologos.cc/logos/polygon-matic-logo.png" width='22px'alt="..."></span> 1 matic</p>
+                <a id="buy-nft-plant" style="background-color: rgba(208, 0, 255, 0.9);color: white;" class="btn">Buy</a>
+              </div>
+            </div>      
+          </div>
+
+
+      <div class="col">
+        <div class="card" style="width: 18rem;">
+            <img src="../images/01/germination.png" class="card-img-top try" alt="...">
+            <div class="card-body text-center">
+              <h4 class="card-title">Green Pea Seed</h4><br/>
+              <h6 class="card-text">
+                <div class="d-flex">
+                  <div class="w-50">Farmer's Name</div>
+                  <div class="w-50">Red Man</div>
+                </div>
+              <h6 class="card-text">
+                <div class="d-flex">
+                  <div class="w-50">Days </div>
+                  <div class="progress my-1 w-50">
+                    <div class="progress-bar" role="progressbar" style="width: 10%; background-color: rgba(208, 0, 255, 0.9)" aria-valuenow=4" aria-valuemin="0" aria-valuemax="120">4</div>
+                  </div>
+                </div>
+                <h6 class="card-text">
+                  <div class="d-flex">
+                    <div class="w-50">Temperature</div>
+                    <div class="progress my-1 w-50">
+                      <div class="progress-bar" role="progressbar" style="width: 50%; background-color: rgba(208, 0, 255, 0.9)" aria-valuenow="10" aria-valuemin="0" aria-valuemax="25">10</div>
+                    </div>
+                  </div>
+                  <h6 class="card-text">
+                    <div class="d-flex">
+                      <div class="w-50">Seeding Date</div>
+                      <div class="w-50">15-March-2022</div>
+                    </div>
+                    <h6 class="card-text">
+                      <div class="d-flex">
+                        <div class="w-50">Growth Stage</div>
+                        <div class="w-50">Seeding Stage</div>
+                      </div><br/>
+              <p class="h2"><span><img src="https://cryptologos.cc/logos/polygon-matic-logo.png" width='22px'alt="..."></span> 4 matic</p>
+              <a id="buy-nft-plant" style="background-color: rgba(208, 0, 255, 0.9);color: white;" class="btn">Buy</a>
+
+            </div>
+          </div>      
+        </div>
+
+        <div class="col">
+            <div class="card" style="width: 18rem;">
+                <img src="../images/01/flowering.png" class="card-img-top try" alt="...">
+                <div class="card-body text-center">
+                  <h4 class="card-title">Green Pea Flower</h4><br/>
+                  <h6 class="card-text">
+                    <div class="d-flex">
+                      <div class="w-50">Farmer's Name</div>
+                      <div class="w-50">Blue Man</div>
+                    </div>
+                  <h6 class="card-text">
+                    <div class="d-flex">
+                      <div class="w-50">Days </div>
+                      <div class="progress my-1 w-50">
+                        <div class="progress-bar" role="progressbar" style="width: 90%; background-color: rgba(208, 0, 255, 0.9)" aria-valuenow="40" aria-valuemin="0" aria-valuemax="120">105</div>
+                      </div>
+                    </div>
+                    <h6 class="card-text">
+                      <div class="d-flex">
+                        <div class="w-50">Temperature</div>
+                        <div class="progress my-1 w-50">
+                          <div class="progress-bar" role="progressbar" style="width: 80%; background-color: rgba(208, 0, 255, 0.9)" aria-valuenow="18" aria-valuemin="0" aria-valuemax="25">18</div>
+                        </div>
+                      </div>
+                      <h6 class="card-text">
+                        <div class="d-flex">
+                          <div class="w-50">Seeding Date</div>
+                          <div class="w-50">19-March-2022</div>
+                        </div>
+                        <h6 class="card-text">
+                          <div class="d-flex">
+                            <div class="w-50">Growth Stage</div>
+                            <div class="w-50">Ready for yield</div>
+                          </div><br/>
+                          <p class="h2"><span><img src="https://cryptologos.cc/logos/polygon-matic-logo.png" width='22px'alt="..."></span> 8 matic</p>
+                          <a id="buy-nft-plant" style="background-color: rgba(208, 0, 255, 0.9);color: white;" class="btn">Buy</a>
+                </div>
+              </div>      
+            </div>
+
+    </div>
+    <br/>
+    <div class="row">
+      <div class="col">
+        <div class="card" style="width: 18rem;">
+            <img src="../images/01/growth.png" class="card-img-top try" alt="...">
+            <div class="card-body text-center">
+              <h4 class="card-title">Green Pea Grain</h4><br/>
+              <h6 class="card-text">
+                <div class="d-flex">
+                  <div class="w-50">Farmer's Name</div>
+                  <div class="w-50">Blue Man</div>
+                </div>
+              <h6 class="card-text">
+                <div class="d-flex">
+                  <div class="w-50">Days </div>
+                  <div class="progress my-1 w-50">
+                    <div class="progress-bar" role="progressbar" style="width: 33.33%; background-color: rgba(208, 0, 255, 0.9)" aria-valuenow="40" aria-valuemin="0" aria-valuemax="120">40</div>
+                  </div>
+                </div>
+                <h6 class="card-text">
+                  <div class="d-flex">
+                    <div class="w-50">Temperature</div>
+                    <div class="progress my-1 w-50">
+                      <div class="progress-bar" role="progressbar" style="width: 70%; background-color: rgba(208, 0, 255, 0.9)" aria-valuenow="15" aria-valuemin="0" aria-valuemax="25">15</div>
+                    </div>
+                  </div>
+                  <h6 class="card-text">
+                    <div class="d-flex">
+                      <div class="w-50">Seeding Date</div>
+                      <div class="w-50">15-March-2022</div>
+                    </div>
+                    <h6 class="card-text">
+                      <div class="d-flex">
+                        <div class="w-50">Growth Stage</div>
+                        <div class="w-50">Emergence to Flower</div>
+                      </div><br/>
+              <p class="h2"><span><img src="https://cryptologos.cc/logos/polygon-matic-logo.png" width='22px'alt="..."></span> 1 matic</p>
+              <a id="buy-nft-plant" style="background-color: rgba(208, 0, 255, 0.9);color: white;" class="btn">Buy</a>
+            </div>
+          </div>      
+        </div>
+
+
+    <div class="col">
+      <div class="card" style="width: 18rem;">
+          <img src="../images/01/germination.png" class="card-img-top try" alt="...">
+          <div class="card-body text-center">
+            <h4 class="card-title">Green Pea Seed</h4><br/>
+            <h6 class="card-text">
+              <div class="d-flex">
+                <div class="w-50">Farmer's Name</div>
+                <div class="w-50">Red Man</div>
+              </div>
+            <h6 class="card-text">
+              <div class="d-flex">
+                <div class="w-50">Days </div>
+                <div class="progress my-1 w-50">
+                  <div class="progress-bar" role="progressbar" style="width: 10%; background-color: rgba(208, 0, 255, 0.9)" aria-valuenow=4" aria-valuemin="0" aria-valuemax="120">4</div>
+                </div>
+              </div>
+              <h6 class="card-text">
+                <div class="d-flex">
+                  <div class="w-50">Temperature</div>
+                  <div class="progress my-1 w-50">
+                    <div class="progress-bar" role="progressbar" style="width: 50%; background-color: rgba(208, 0, 255, 0.9)" aria-valuenow="10" aria-valuemin="0" aria-valuemax="25">10</div>
+                  </div>
+                </div>
+                <h6 class="card-text">
+                  <div class="d-flex">
+                    <div class="w-50">Seeding Date</div>
+                    <div class="w-50">15-March-2022</div>
+                  </div>
+                  <h6 class="card-text">
+                    <div class="d-flex">
+                      <div class="w-50">Growth Stage</div>
+                      <div class="w-50">Seeding Stage</div>
+                    </div><br/>
+            <p class="h2"><span><img src="https://cryptologos.cc/logos/polygon-matic-logo.png" width='22px'alt="..."></span> 4 matic</p>
+            <a id="buy-nft-plant" style="background-color: rgba(208, 0, 255, 0.9);color: white;" class="btn">Buy</a>
+
+          </div>
+        </div>      
+      </div>
+
+      <div class="col">
+          <div class="card" style="width: 18rem;">
+              <img src="../images/01/flowering.png" class="card-img-top try" alt="...">
+              <div class="card-body text-center">
+                <h4 class="card-title">Green Pea Flower</h4><br/>
+                <h6 class="card-text">
+                  <div class="d-flex">
+                    <div class="w-50">Farmer's Name</div>
+                    <div class="w-50">Blue Man</div>
+                  </div>
+                <h6 class="card-text">
+                  <div class="d-flex">
+                    <div class="w-50">Days </div>
+                    <div class="progress my-1 w-50">
+                      <div class="progress-bar" role="progressbar" style="width: 90%; background-color: rgba(208, 0, 255, 0.9)" aria-valuenow="40" aria-valuemin="0" aria-valuemax="120">105</div>
+                    </div>
+                  </div>
+                  <h6 class="card-text">
+                    <div class="d-flex">
+                      <div class="w-50">Temperature</div>
+                      <div class="progress my-1 w-50">
+                        <div class="progress-bar" role="progressbar" style="width: 80%; background-color: rgba(208, 0, 255, 0.9)" aria-valuenow="18" aria-valuemin="0" aria-valuemax="25">18</div>
+                      </div>
+                    </div>
+                    <h6 class="card-text">
+                      <div class="d-flex">
+                        <div class="w-50">Seeding Date</div>
+                        <div class="w-50">19-March-2022</div>
+                      </div>
+                      <h6 class="card-text">
+                        <div class="d-flex">
+                          <div class="w-50">Growth Stage</div>
+                          <div class="w-50">Ready for yield</div>
+                        </div><br/>
+                        <p class="h2"><span><img src="https://cryptologos.cc/logos/polygon-matic-logo.png" width='22px'alt="..."></span> 8 matic</p>
+                        <a id="buy-nft-plant" style="background-color: rgba(208, 0, 255, 0.9);color: white;" class="btn">Buy</a>
+              </div>
+            </div>      
+          </div>
+
+  </div>
+
+
+  
+    </body>
+    <br>
+    <br>
+    <br>
+    <br>
+    <!-- <footer class="footer">
+      <div class="container text-center">
+        <a href="#"><i class="bi bi-twitter"></i></a>
+        <a href="#"><i class="bi bi-discord"></i></a>
+        <a href="#"><i class="bi bi-telegram"></i></a>
+        <a href="#"><i class="bi bi-reddit"></i></a>
+      </div>
+    </footer> -->
+</html>

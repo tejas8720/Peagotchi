@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<style>
+    .text-info {
+	position: absolute;
+	top: 10px;
+	width: 100%;
+	text-align: center;
+	z-index: 100;
+	display:block;
+
+    .btn1-primary {
+        color: #fff;
+        background-color: #8d5d5d;
+        border-color: #2e6da4;
+}
+}
+</style>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Peagotchi Metaverse</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+   
+		<style>
+			body { margin: 0; }
+		</style>
+	</head>
+	<body>
+        <nav class="navbar navbar-dark bg-dark">
+            <a class="navbar-brand mb-0 h1" href="#">
+              Peagotchi<br>
+              Metaverse
+              </a>
+            </a>
+            <a class="navbar-brand mb-0 h1" href="/index.html">
+              Home
+            </a>
+            <a class="navbar-brand mb-0 h1" href="/meta.html">
+              Peagotchiverse
+            </a>
+            <a class="navbar-brand mb-0 h1" href="/marketplace.html">
+              Market place
+            </a>
+            <a class="navbar-link" href="https://testnets.opensea.io/assets/mumbai/0x7618f41e0b4be75d0ca163987053a6ae9d92c7da/0">
+              Open Sea
+            </a>
+                 <button id="connect-metamask" type="button" class="btn" style="background-color: #f4d03f;">Connect Metamask</button>
+                </li>
+                </ul>
+                </div>
+            <script type="module">
+              // Connect to Metamask
+              document.getElementById('connect-metamask').addEventListener('click', event => {
+              let account;
+              let button = event.target;
+              ethereum.request({method: 'eth_requestAccounts'}).then(accounts => {
+                account = accounts[0];
+                console.log(account);
+                button.textContent = account;
+      
+                ethereum.request({method: 'eth_getBalance' , params: [account, 'latest']}).then(result => {
+                  console.log(result);
+                  let wei = parseInt(result,16);
+                  let balance = wei / (10**18);
+                  console.log(balance + " ETH");
+                });
+              });
+            });
+          </script>
+        </nav>
+		<script src="../Scripts/three.js"></script>
+        <script src="https://unpkg.com/web3@latest/dist/web3.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/dat-gui/0.7.9/dat.gui.min.js"></script>
+        <div class="col-sm">
+			<input class="form-control" type="number" id="nft_id" required />
+			<button id="mint" class="btn btn-primary" type="submit">
+				Mint Land in Polygon
+			</button>
+		</div>
+		<script type="module">
+            import blockchain from "../Scripts/Web3.js";
+            import landabi from "../abi/landabi.json" assert {type: "json"};
+
+			const scene = new THREE.Scene();
+			const camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
+
+			const renderer = new THREE.WebGLRenderer();
+			renderer.setSize( window.innerWidth, window.innerHeight );
+			document.body.appendChild( renderer.domElement );
+
+			const geometry = new THREE.CylinderGeometry( 200, 200, 10, 20 );
+			const material = new THREE.MeshNormalMaterial( );
+			const cube = new THREE.Mesh( geometry, material );
+			scene.add( cube );
+            scene.rotation.set(0.5, 0, 0);
+
+            // Making Avatar
+            var cover = new THREE.MeshNormalMaterial();
+            var body = new THREE.SphereGeometry(50);
+            var avatar = new THREE.Mesh(body, cover);
+            avatar.position.set(0,100,50);
+            scene.add(avatar);
+            var hand = new THREE.SphereGeometry(25);
+            var right_hand = new THREE.Mesh(hand, cover);
+            right_hand.position.set(-50, 75, 0);
+            scene.add(right_hand);
+            var left_hand = new THREE.Mesh(hand, cover);
+            left_hand.position.set(50, 75, 0);
+            scene.add(left_hand);
+            var foot = new THREE.SphereGeometry(25);
+            var right_foot = new THREE.Mesh(foot, cover);
+            right_foot.position.set(-25, 25, 0);
+            scene.add(right_foot);
+            var left_foot = new THREE.Mesh(foot, cover);
+            left_foot.position.set(25, 25, 0);
+            scene.add(left_foot);
+
+            // Create Forest
+            makeTreeAt( 100,  0);
+            makeTreeAt(-100,  0);
+            makeTreeAt( 120, 50);
+            makeTreeAt(-120, 50);
+
+            function makeTreeAt(x, z) {
+                var trunk = new THREE.Mesh(
+                    new THREE.CylinderGeometry(10, 10, 50),
+                    new THREE.MeshBasicMaterial({color: 0xA0522D})
+                );
+                var top = new THREE.Mesh(
+                    new THREE.SphereGeometry(25),
+                    new THREE.MeshBasicMaterial({color: 0x228B22})
+                );
+                top.position.y = 50;
+                trunk.add(top);
+                trunk.position.set(x, 50, z);
+                scene.add(trunk);
+            }
+
+            function handler(soilTemp, GrowthDays) {
+                var day_count = GrowthDays;
+                var avg_temp = soilTemp;
+                console.log("check temp:", avg_temp);
+
+                if((avg_temp > 12 && avg_temp <18) && (day_count > 0 && day_count <10) ) {
+                    gotchi(-40, 100, '../images/01/seed.png');
+                }
+
+                else if((avg_temp > 12 && avg_temp <18) && (day_count > 50 && day_count <80) ) {
+                    gotchi(-40, 100, '../images/01/1-growth.png');
+                }
+
+                else if((avg_temp > 12 && avg_temp <18) && (day_count > 90 && day_count <120)) {
+                    gotchi(-40, 100, '../images/01/1-yield.png');
+                }
+            };
+
+            // Adding Gotchi
+            // gotchi(-40, 100, '../images/seed.png');
+            // gotchi(-10, 100, '../images/seed.png');
+            // gotchi(20, 100, '../images/seed.png');
+            // gotchi(50, 100, '../images/seed.png');
+
+            function gotchi(X, Z, texture) {
+                var texture = new THREE.TextureLoader().load(texture);
+                console.log(texture);
+                var mesh = new THREE.MeshBasicMaterial({ map: texture }, { color: 0xffff00 });
+                var geometry = new THREE.PlaneGeometry(15, 15);
+                var gotchi = new THREE.Mesh(geometry, mesh);
+                scene.add(gotchi);
+                gotchi.position.set(X, 30, Z);
+            }
+
+			camera.position.z = 300;
+
+            function numRange(a, b) {
+                return a, b
+            }
+
+            var obj = {
+                name: "Pea Crop",
+                Soil_Temp: 17,
+                Soil_Moisture: 14,
+                Growth_Days: 1
+            };
+
+            const gui = new dat.GUI();
+            // String field
+            gui.add(obj, "name");
+            gui.add(obj, "Soil_Moisture");
+
+            // Temperature with slider
+            gui.add(obj, "Soil_Temp", 0, 20, 1).onChange((val) => {
+                soilTemp = val;
+                simple(); 
+            });
+            // Growth days slider
+            gui.add(obj, "Growth_Days", 1, 120).onChange((val) => {
+                GrowthDays = val;
+                simple();
+            });
+            // simple function
+            function simple() {
+                console.log("test");
+                handler(soilTemp, GrowthDays);
+            }
+
+            var soilTemp = 17;
+            var GrowthDays = 1;
+            handler(soilTemp, GrowthDays);
+
+            // Change Gotchi
+
+			function animate() {
+                requestAnimationFrame( animate );
+                renderer.render( scene, camera );
+            };
+
+			animate();
+            // Mint NFT
+            const land_address = "0x98598686C440554182b3ceC3694d18B1F5A09020";
+
+            // New NFT
+        const buttonMint = document.getElementById('mint');
+        buttonMint.addEventListener('click', mintNFT);
+
+
+        function mintNFT() {
+            // Parameters to create a NFT in the Metaverse
+            var _id = document.getElementById("nft_id").value;
+
+            // If Metamask is not available
+            if (typeof window.ethereum == "undefined") {
+                rej("You should install Metamask to use it!");
+            }
+
+            // Web3 Instance
+            let web3 = new Web3(window.ethereum);
+            let contract = new web3.eth.Contract(landabi, land_address);
+
+            try {
+                web3.eth.getAccounts().then((accounts) => {
+                    contract.methods.mint(_id).send({ from: accounts[0] }).then((data) => {
+                        console.log("NFT available in the Metaverse!");
+                    });
+                });
+            } catch (error) {
+                console.log("Error");
+            }
+        };
+
+            // Create plots in blockchain
+            blockchain.then((result) => {
+            result.plot.forEach((plot, index) => {
+                if(index <= 8) {
+                    // Representation of NFT Token in metaverse
+                    // Setting plot 4 for metaverse
+                    var plot_name = "plot" + index;
+                    let color = [0x8d5d5d, 0x86895d, 0x8d5d5d, 0x86895d, 
+                                    0xd8e7f5, 0x616365, 0xd8e7f5, 0x616365]
+
+                    const plot_geometry = new THREE.PlaneGeometry(plot.sizeX, plot.sizeY);
+                    const plot_material = new THREE.MeshBasicMaterial({ color: color[index] });
+                    plot_name = new THREE.Mesh(plot_geometry, plot_material);
+                    plot_name.rotation.set(-1, 0, 0);
+                    scene.add(plot_name);
+                    plot_name.position.set(plot.posX, plot.posY, plot.posZ);
+                }
+            })
+        });
+
+        const plot_output = await blockchain.then((result) => {
+				return result
+			});
+
+        // plot owner details
+			var P1owner =plot_output['plot'][0]['owner'];
+            var P2owner =plot_output['plot'][1]['owner'];
+            var P3owner =plot_output['plot'][2]['owner'];
+            var P4owner =plot_output['plot'][3]['owner'];
+            var P5owner =plot_output['plot'][4]['owner'];
+            var P6owner =plot_output['plot'][5]['owner'];
+            var P7owner =plot_output['plot'][6]['owner'];
+            var P8owner =plot_output['plot'][7]['owner'];
+
+			document.getElementById('owner1').innerHTML = P1owner;
+			document.getElementById('owner2').innerHTML = P2owner;
+			document.getElementById('owner3').innerHTML = P3owner;
+			document.getElementById('owner4').innerHTML = P4owner;
+            document.getElementById('owner5').innerHTML = P5owner;
+            document.getElementById('owner6').innerHTML = P6owner;
+            document.getElementById('owner7').innerHTML = P7owner;
+            document.getElementById('owner8').innerHTML = P8owner;
+
+		</script>
+        <div style="display: block; position: absolute; bottom: 50px; left: 8px; width: 160px; padding: 0px; background-color: #23b4b49d;">
+			<center>
+                <button type="button" id="owner1" style="background-color: #8d5d5d ;"></button>
+                <button type="button" id="owner2" style="background-color : #86895d"></button>
+                <button type="button" id="owner3" style="background-color: #8d5d5d"></button>
+                <button type="button" id="owner4" style="background-color: #86895d"></button>
+                <button type="button" id="owner5" style="background-color: #d8e7f5"></button>
+                <button type="button" id="owner6" style="background-color: #616365"></button>
+                <button type="button" id="owner7" style="background-color: #d8e7f5"></button>
+                <button type="button" id="owner8" style="background-color: #616365"></button>
+				<br />
+			</center>
+		</div>
+	</body>
+</html>
